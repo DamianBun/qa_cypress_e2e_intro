@@ -14,7 +14,7 @@ describe('Sign In page', () => {
   it('should provide an ability to log in', () => {
     cy.visit('/');
 
-    cy.request('POST', 'https://conduit.mate.academy/api/users', {
+    cy.request('POST', `${Cypress.config('baseUrl')}/api/users`, {
       user: {
         username: userName,
         email,
@@ -29,7 +29,7 @@ describe('Sign In page', () => {
       cy.get('[placeholder="Password"]')
         .type(password);
 
-      cy.get('[class="btn btn-lg btn-primary pull-xs-right"]')
+      cy.contains('button', 'Sign in')
         .click();
 
       cy.url()
